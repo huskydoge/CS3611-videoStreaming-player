@@ -523,7 +523,7 @@ class Client(ttk.Frame):
                     # by hbh, 5.21, package loss rate
                     # 如果存在回退，那么就不改变丢包率，因为已经收到了；直到帧数大于第一次回退时的frameNbr，才继续改变丢包率
                     if not self.rev:
-                        if currFrameNbr - self.frameNbr > 1:
+                        if currFrameNbr - self.frameNbr >= 1:
                             self.packages_loss += currFrameNbr - self.frameNbr - 1
                             packages_loss_list.append((curtime - start_time, self.packages_loss))
                             self.packages_loss_rate = self.packages_loss / currFrameNbr
@@ -531,7 +531,7 @@ class Client(ttk.Frame):
 
                     elif self.frameNbr >= self.record_rev_frame:
                         self.rev = False
-                        if currFrameNbr - self.frameNbr > 1:
+                        if currFrameNbr - self.frameNbr >= 1:
                             self.packages_loss += currFrameNbr - self.frameNbr - 1
                             packages_loss_list.append((curtime - start_time, self.packages_loss))
                             self.packages_loss_rate = self.packages_loss / currFrameNbr
