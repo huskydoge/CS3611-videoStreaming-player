@@ -32,6 +32,8 @@ def visualize_data():
 
     # 增加子图之间的垂直间距
     plt.subplots_adjust(hspace=0.5)
+    
+    plt.tight_layout() # 自动排版
 
     plt.savefig('result.png')
 
